@@ -8,8 +8,27 @@ datasource db {
 }
 
 model User {
-  id    Int     @default(autoincrement()) @id
-  name  String?
-  email String  @unique
+  id       Int      @id @default(autoincrement())
+  name     String?
+  email    String   @unique
   password String
+  decks    Deck[]
+}
+
+model Deck {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  category    String
+  ownerId     Int  
+  owner       User     @relation(fields: [ownerId], references: [id])
+  cards       Card[]  
+}
+
+model Card {
+  id         Int      @id @default(autoincrement())
+  term       String
+  translation String
+  deckId     Int      
+  deck       Deck     @relation(fields: [deckId], references: [id])
 }

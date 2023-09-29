@@ -48,7 +48,10 @@ export class UsersService {
     if (!users || users.length === 0) {
       throw new NotFoundException('No users found');
     }
-    return users;
+    return {
+      ...users,
+      password: undefined,
+    };
   }
 
   async readById(id: string) {
@@ -61,7 +64,10 @@ export class UsersService {
     if (!user) {
       throw new NotFoundException('No users found');
     }
-    return user;
+    return {
+      ...user,
+      password: undefined,
+    };
   }
 
   async update(id: string, userDto: UpdateUserDto) {
