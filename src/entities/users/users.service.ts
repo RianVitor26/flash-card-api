@@ -42,19 +42,19 @@ export class UsersService {
     };
   }
 
-  async readAll() {
+  async findAll() {
     const users = await this.prisma.user.findMany();
 
     if (!users || users.length === 0) {
       throw new NotFoundException('No users found');
     }
-    return {
-      ...users,
+    return users.map((user) => ({
+      ...user,
       password: undefined,
-    };
+    }));
   }
 
-  async readById(id: string) {
+  async findOne(id: string) {
     const user = await this.prisma.user.findUnique({
       where: {
         id: Number(id),

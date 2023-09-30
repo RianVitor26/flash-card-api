@@ -21,14 +21,14 @@ export class UsersController {
   }
 
   @Get()
-  readAll() {
-    const users = this.usersService.readAll();
+  findAll() {
+    const users = this.usersService.findAll();
     return users;
   }
 
   @Get('/:id')
-  readById(@Param('id') id: string) {
-    const user = this.usersService.readById(id);
+  findOne(@Param('id') id: string) {
+    const user = this.usersService.findOne(id);
     return user;
   }
 
