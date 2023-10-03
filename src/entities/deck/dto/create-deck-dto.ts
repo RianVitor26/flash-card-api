@@ -1,6 +1,7 @@
 export interface CreateDeckDto {
-  userId: number;
+  id: number;
   name: string;
   description?: string;
   category: string;
+  ownerId: number;
 }

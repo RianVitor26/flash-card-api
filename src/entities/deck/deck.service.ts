@@ -27,7 +27,7 @@ export class DeckService {
 
   async findAll(userId: number) {
     const decks = await this.prismaService.deck.findMany({
-      where: { ownerId: userId },
+      where: { ownerId: Number(userId) },
     });
 
     if (!decks) {
@@ -39,7 +39,7 @@ export class DeckService {
 
   async findOne(userId: number, deckId: number) {
     const deck = await this.prismaService.deck.findUnique({
-      where: { id: deckId, ownerId: userId },
+      where: { id: Number(deckId), ownerId: Number(userId) },
     });
 
     if (!deck) {
@@ -56,7 +56,7 @@ export class DeckService {
 
     if (existingDeck) {
       const updatedDeck = await this.prismaService.deck.update({
-        where: { id: deckId },
+        where: { id: Number(deckId) },
         data: deckDto,
       });
 
@@ -69,7 +69,7 @@ export class DeckService {
 
     if (existingDeck) {
       await this.prismaService.deck.delete({
-        where: { id: deckId },
+        where: { id: Number(deckId) },
       });
     }
   }
