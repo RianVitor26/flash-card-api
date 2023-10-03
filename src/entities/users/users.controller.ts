@@ -26,20 +26,20 @@ export class UsersController {
     return users;
   }
 
-  @Get('/:id')
-  findOne(@Param('id') id: string) {
-    const user = this.usersService.findOne(id);
+  @Get('/:userId')
+  findOne(@Param('userId') userId: number) {
+    const user = this.usersService.findOne(userId);
     return user;
   }
 
-  @Put('/:id')
-  update(@Param('id') id: string, @Body() userDto: UpdateUserDto) {
-    const updatedUser = this.usersService.update(id, userDto);
+  @Put('/:userId')
+  update(@Param('userId') userId: number, @Body() userDto: UpdateUserDto) {
+    const updatedUser = this.usersService.update(userId, userDto);
     return updatedUser;
   }
 
-  @Delete('/:id')
-  delete(@Param('id') id: string) {
-    this.usersService.delete(id);
+  @Delete('/:userId')
+  delete(@Param('userId') userId: number) {
+    this.usersService.delete(userId);
   }
 }

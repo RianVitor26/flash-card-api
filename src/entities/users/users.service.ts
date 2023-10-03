@@ -54,10 +54,10 @@ export class UsersService {
     }));
   }
 
-  async findOne(id: string) {
+  async findOne(userId: number) {
     const user = await this.prisma.user.findUnique({
       where: {
-        id: Number(id),
+        id: Number(userId),
       },
     });
 
@@ -70,10 +70,10 @@ export class UsersService {
     };
   }
 
-  async update(id: string, userDto: UpdateUserDto) {
+  async update(userId: number, userDto: UpdateUserDto) {
     const existsUser = await this.prisma.user.findUnique({
       where: {
-        id: Number(id),
+        id: Number(userId),
       },
     });
 
@@ -83,7 +83,7 @@ export class UsersService {
 
     const updatedUser = await this.prisma.user.update({
       where: {
-        id: Number(id),
+        id: Number(userId),
       },
       data: userDto,
     });
@@ -91,10 +91,10 @@ export class UsersService {
     return updatedUser;
   }
 
-  async delete(id: string) {
+  async delete(userId: number) {
     const existsUser = await this.prisma.user.findUnique({
       where: {
-        id: Number(id),
+        id: Number(userId),
       },
     });
 
@@ -104,7 +104,7 @@ export class UsersService {
 
     await this.prisma.user.delete({
       where: {
-        id: Number(id),
+        id: Number(userId),
       },
     });
 
