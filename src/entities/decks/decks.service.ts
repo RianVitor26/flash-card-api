@@ -3,7 +3,7 @@ import { CreateDeckDto } from './dto/create-deck-dto';
 import { PrismaService } from '../../database/prisma.service';
 
 @Injectable()
-export class DeckService {
+export class DecksService {
   constructor(private readonly prismaService: PrismaService) {}
 
   async create(userId: number, deckDto: CreateDeckDto) {

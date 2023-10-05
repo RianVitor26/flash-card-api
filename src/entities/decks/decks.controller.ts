@@ -7,12 +7,12 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { DeckService } from './deck.service';
+import { DecksService } from './decks.service';
 import { CreateDeckDto } from './dto/create-deck-dto';
 
 @Controller('users/:userId/decks')
-export class DeckController {
-  constructor(private readonly deckService: DeckService) {}
+export class DecksController {
+  constructor(private readonly deckService: DecksService) {}
 
   @Post()
   create(@Body() deckDto: CreateDeckDto, @Param('userId') userId: number) {
