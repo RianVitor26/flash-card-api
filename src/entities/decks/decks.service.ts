@@ -28,6 +28,9 @@ export class DecksService {
   async findAll(userId: number) {
     const decks = await this.prismaService.deck.findMany({
       where: { ownerId: Number(userId) },
+      include: {
+        cards: true,
+      },
     });
 
     if (!decks) {
@@ -68,6 +71,16 @@ export class DecksService {
     const existingDeck = await this.findOne(userId, deckId);
 
     if (existingDeck) {
+      const relatedCards = await this.prismaService.card.findMany({
+        where: { deckId: Number(deckId) },
+      });
+
+      if (relatedCards.length > 0) {
+        await this.prismaService.card.deleteMany({
+          where: { deckId: Number(deckId) },
+        });
+      }
+
       await this.prismaService.deck.delete({
         where: { id: Number(deckId) },
       });
