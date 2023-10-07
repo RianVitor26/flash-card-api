@@ -1,0 +1,34 @@
+name: Formatar Código com Eslint
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v2
+
+      - name: Configurar Node.js e pnpm
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - run: pnpm install -g pnpm
+
+      - name: Instalar dependências do projeto
+        run: pnpm install
+
+      - name: Formatar código
+        run: pnpm format
+
+      - name: Commit das alterações formatadas
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git add .
+          git commit -m "Github actions automatically formatting code"
+          git push
