@@ -22,21 +22,23 @@ jobs:
 
       - name: Instalar dependências do projeto
         run: pnpm install
-
-      - name: Verificar alterações não commitadas
-        run: |
-          if git diff --exit-code; then
-            echo "No changes to formatting. Leaving..."
-            exit 0
-          fi
+        
+      - name: Verificar alterações no código
+        id: check_changes
+        run: echo ::set-output name=has_changes::$(git status --porcelain)
 
       - name: Formatar código
         run: pnpm format
+        if: steps.check_changes.outputs.has_changes == 'M'  # Executa somente se houver alterações
 
-      - name: Commit das alterações formatadas
+      - name: Commit das alterações formatadas (se houver)
         run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git add .
-          git commit -m "Automating code formatting with Github Actions"
-          git push
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "${{ github.actor }}"
+            git config user.email "${{ github.actor }}@users.noreply.github.com"
+            git add .
+            git commit -m "Automating code formatting with Github Actions"
+            git push
+          else
+            echo "Nenhuma alteração para formatar. Saindo..."
+          fi
