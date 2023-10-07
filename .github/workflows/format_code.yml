@@ -17,10 +17,18 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
+
       - run: npm install -g pnpm
 
       - name: Instalar dependências do projeto
         run: pnpm install
+
+      - name: Verificar alterações não commitadas
+        run: |
+          if git diff --exit-code; then
+            echo "No changes to formatting. Leaving..."
+            exit 0
+          fi
 
       - name: Formatar código
         run: pnpm format
@@ -30,5 +38,5 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git add .
-          git commit -m "Github actions automatically formatting code"
+          git commit -m "Automating code formatting with Github Actions"
           git push
