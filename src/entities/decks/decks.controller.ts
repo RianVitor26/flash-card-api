@@ -9,11 +9,14 @@ import {
 } from '@nestjs/common';
 import { DecksService } from './decks.service';
 import { CreateDeckDto } from './dto/create-deck-dto';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('decks')
 @Controller('users/:userId/decks')
 export class DecksController {
   constructor(private readonly deckService: DecksService) {}
 
+  @ApiOperation({ summary: 'create a deck for a user' })
   @Post()
   create(@Body() deckDto: CreateDeckDto, @Param('userId') userId: number) {
     const createdDeck = this.deckService.create(userId, deckDto);

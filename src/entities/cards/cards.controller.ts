@@ -1,11 +1,25 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { CardsService } from './cards.service';
 import { CreateCardDto } from './dto/create-deck-dto';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { CreateDeckDto } from '../decks/dto/create-deck-dto';
 
+@ApiTags('cards')
 @Controller('users/:userId/decks/:deckId/cards')
 export class CardsController {
   constructor(private readonly cardsService: CardsService) {}
 
+  @ApiOperation({
+    summary: 'create a card for a deck from a user',
+  })
   @Post()
   create(
     @Body() cardDto: CreateCardDto,
@@ -22,9 +36,9 @@ export class CardsController {
     return cards;
   }
 
-  // @Get('/:deckId')
-  // findOne(@Param('userId') userId: number, @Param('deckId') deckId: number) {
-  //   const deck = this.cardsService.findOne(userId, deckId);
+  // @Get('/:cardId')
+  // findOne(@Param('userId') userId: number, @Param('cardId') cardId: number) {
+  //   const deck = this.cardsService.findOne(userId, cardId);
   //   return deck;
   // }
 
@@ -40,6 +54,6 @@ export class CardsController {
 
   // @Delete('/:deckId')
   // delete(@Param('userId') userId: number, @Param('deckId') deckId: number) {
-  //   this.cardsService.delete(userId, deckId);
+  //   this.cardsService.remove(userId, deckId);
   // }
 }

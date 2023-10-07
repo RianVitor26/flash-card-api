@@ -98,16 +98,19 @@ export class CardsService {
     }
   }
 
-  async update(cardId: number, cardDto: CreateCardDto) {
+  async update(cardId: number, cardDto: CreateCardDto, deckId: number) {
     try {
       const cardExists = await this.prismaService.card.findUnique({
         where: {
           id: Number(cardId),
+          deck: {
+            id: Number(deckId),
+          },
         },
       });
 
       if (!cardExists) {
-        throw new NotFoundException('Card not found');
+        throw new NotFoundException('Card not found in the specified deck');
       }
 
       const updatedCard = await this.prismaService.card.update({
@@ -123,16 +126,19 @@ export class CardsService {
     }
   }
 
-  async remove(cardId: number) {
+  async remove(cardId: number, deckId: number) {
     try {
       const cardExists = await this.prismaService.card.findUnique({
         where: {
           id: Number(cardId),
+          deck: {
+            id: Number(deckId),
+          },
         },
       });
 
       if (!cardExists) {
-        throw new NotFoundException('Card not found');
+        throw new NotFoundException('Card not found in the specified deck');
       }
 
       await this.prismaService.card.delete({
