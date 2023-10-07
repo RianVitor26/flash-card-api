@@ -107,7 +107,7 @@ export class UsersService {
     }
   }
 
-  async delete(userId: number) {
+  async remove(userId: number) {
     try {
       const existsUser = await this.prisma.user.findUnique({
         where: {

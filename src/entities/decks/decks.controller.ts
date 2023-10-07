@@ -11,7 +11,7 @@ import { DecksService } from './decks.service';
 import { CreateDeckDto } from './dto/create-deck-dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
-@ApiTags('decks')
+@ApiTags('Decks')
 @Controller('users/:userId/decks')
 export class DecksController {
   constructor(private readonly deckService: DecksService) {}

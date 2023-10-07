@@ -11,9 +11,6 @@ async function bootstrap() {
     .setTitle('Flash Cards')
     .setDescription('The Flash Cards API description')
     .setVersion('1.0')
-    .addTag('users')
-    .addTag('decks')
-    .addTag('cards')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

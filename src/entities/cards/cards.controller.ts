@@ -12,7 +12,7 @@ import { CreateCardDto } from './dto/create-deck-dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateDeckDto } from '../decks/dto/create-deck-dto';
 
-@ApiTags('cards')
+@ApiTags('Cards')
 @Controller('users/:userId/decks/:deckId/cards')
 export class CardsController {
   constructor(private readonly cardsService: CardsService) {}
