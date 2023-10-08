@@ -36,11 +36,15 @@ export class CardsController {
     return cards;
   }
 
-  // @Get('/:cardId')
-  // findOne(@Param('userId') userId: number, @Param('cardId') cardId: number) {
-  //   const deck = this.cardsService.findOne(userId, cardId);
-  //   return deck;
-  // }
+  @Get('/:cardId')
+  findOne(
+    @Param('userId') userId: number,
+    @Param('deckId') deckId: number,
+    @Param('cardId') cardId: number,
+  ) {
+    const cards = this.cardsService.findOne(userId, deckId, cardId);
+    return cards;
+  }
 
   // @Put('/:deckId')
   // update(

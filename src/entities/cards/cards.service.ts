@@ -80,11 +80,15 @@ export class CardsService {
     }
   }
 
-  async findOne(cardId: number) {
+  async findOne(userId: number, deckId: number, cardId: number) {
     try {
       const card = await this.prismaService.card.findUnique({
         where: {
           id: Number(cardId),
+          deck: {
+            ownerId: Number(userId),
+            id: Number(deckId),
+          },
         },
       });
 

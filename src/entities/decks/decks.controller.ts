@@ -32,7 +32,6 @@ export class DecksController {
   }
 
   @ApiOperation({ summary: 'Find all decks' })
-  
   @ApiResponse({ status: 200, description: 'Decks found successfully' })
   @Get()
   findAll(@Param('userId') userId: number) {
