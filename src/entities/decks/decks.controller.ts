@@ -1,3 +1,4 @@
+import { UpdateDeckDto } from './dto/update-deck-dto';
 import {
   Body,
   Controller,
@@ -55,6 +56,7 @@ export class DecksController {
     return deck;
   }
 
+  @ApiBody({ type: UpdateDeckDto })
   @ApiOperation({ summary: 'Update one deck' })
   @ApiResponse({ status: 200, description: 'Deck updated successfully' })
   @ApiParam({

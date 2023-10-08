@@ -102,7 +102,7 @@ export class CardsService {
     }
   }
 
-  async update(cardId: number, cardDto: CreateCardDto, deckId: number) {
+  async update(cardDto: CreateCardDto, deckId: number, cardId: number) {
     try {
       const cardExists = await this.prismaService.card.findUnique({
         where: {
@@ -130,7 +130,7 @@ export class CardsService {
     }
   }
 
-  async remove(cardId: number, deckId: number) {
+  async remove(deckId: number, cardId: number) {
     try {
       const cardExists = await this.prismaService.card.findUnique({
         where: {
