@@ -7,6 +7,7 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { DecksService } from './decks.service';
 import { CreateDeckDto } from './dto/create-deck-dto';
@@ -17,9 +18,11 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('Decks')
 @Controller('users/:userId/decks')
+@UseGuards(AuthGuard('jwt'))
 export class DecksController {
   constructor(private readonly deckService: DecksService) {}
 
