@@ -6,6 +6,8 @@
 UNDER DEVELOPMENT... <br>
 Flash card project for memorizing English terms with spaced learning.
 
+Front end repository link: [Flash Card](https://github.com/RianVitor26/flash-card)
+
 ## Technologies 💻
 * [Nest.js](https://docs.nestjs.com/t)
 * [TypeScript](https://www.typescriptlang.org/)
