@@ -1,3 +1,4 @@
+# Flash Cards API
 <p align="center">
 <img src="https://images.unsplash.com/photo-1663789049904-a1e1e216c829?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=869&q=80">
 </p>
@@ -6,7 +7,7 @@
 UNDER DEVELOPMENT... <br>
 Flash card project for memorizing English terms with spaced learning.
 
-Front end repository link: [Flash Card](https://github.com/RianVitor26/flash-card)
+Front end repository link: [Flash Cards](https://github.com/RianVitor26/flash-cards)
 
 ## Technologies 💻
 * [Nest.js](https://docs.nestjs.com/t)
@@ -41,8 +42,10 @@ $ pnpm run start:prod
 
 ## Swagger 📃
 URL: http://localhost:3000/documentation
+![Screenshot 2023-10-14 085900](https://github.com/RianVitor26/flash-cards-api/assets/77061521/5944ca56-9c5c-48ec-af47-d17130046c6a)
 
-## Test ✅
+
+## Tests ✅
 
 ```bash
 # unit tests
@@ -58,7 +61,7 @@ $ pnpm run test:cov
 <img src="https://avatars.githubusercontent.com/u/77061521?v=4" width=115>
 
 ## License 🛡️
-The [MIT License](https://github.com/RianVitor26/flash-card-api/blob/main/LICENSE) (MIT)
+The [MIT License](https://github.com/RianVitor26/flash-cards-api/blob/main/LICENSE) (MIT)
 
 Copyright :copyright: 2023 - Flash Card
 
